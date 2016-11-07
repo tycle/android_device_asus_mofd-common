@@ -20,6 +20,8 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalv
 # call hwui memory config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
+PRODUCT_LOCALES := en_US
+
 DEVICE_PACKAGE_OVERLAYS := \
     device/asus/mofd-common/overlay
 
