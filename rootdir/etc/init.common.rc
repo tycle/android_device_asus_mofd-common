@@ -129,7 +129,7 @@ on property:sys.boot_completed=1
 
 on charger
     #set properties in COS
-    #start intel_prop
+    start intel_prop
 
     setprop thermal.lite.crash 0
 

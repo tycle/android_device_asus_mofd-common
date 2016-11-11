@@ -11,6 +11,7 @@
 /dev/block/by-name/misc	    /misc	emmc	defaults								defaults
 
 
+
 */block/sd*            auto        auto    defaults    voldmanaged=usb:auto
 */block/mmcblk1*        auto        auto    defaults    voldmanaged=sdcard1:auto,encryptable=userdata
 

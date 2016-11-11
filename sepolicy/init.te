@@ -16,6 +16,7 @@ allow init radio_cache_file:dir { rw_dir_perms relabelto };
 
 # /system/etc/security/sep_policy.conf is loaded
 allow init sepfs:file w_file_perms;
+#allow init system_file:file execute_no_trans;
 
 # Allow shimlibs
 allow init { domain -lmkd }:process noatsecure;

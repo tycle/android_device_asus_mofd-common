@@ -31,14 +31,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.build.asus.sku=WW
 
-# Asus properties
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    ro.adb.secure=0 \
-    sys.usb.config=mtp,adb \
-    sys.usb.configfs=1 \
-    net.bt.name=ASUS_ZENFONE2
-
 # Audio
 PRODUCT_PACKAGES += \
     libtinycompress \
