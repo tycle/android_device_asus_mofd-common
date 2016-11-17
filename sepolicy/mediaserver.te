@@ -3,9 +3,14 @@ allow mediaserver graphics_device:dir search;
 allow mediaserver factory_file:dir search;
 allow mediaserver factory_file:file r_file_perms;
 allow mediaserver media_rw_data_file:dir rw_dir_perms;
-allow mediaserver media_rw_data_file:file { create_file_perms rw_file_perms };
+allow mediaserver media_rw_data_file:file {  rw_file_perms create_file_perms };
 allow mediaserver radio_device:chr_file rw_file_perms;
 allow mediaserver sensorservice_service:service_manager find;
+
+
+#allow mediaserver camera devices
+allow mediaserver camera_device:chr_file { rw_file_perms create_file_perms };
+
 
 # This is evil but we cannot constrain it anymore than
 # "any system_file" because the domain rules in external/sepolicy.
@@ -16,12 +21,19 @@ allow mediaserver system_file:file execmod;
 # want to relabel these files correctly to limit what mediaserver can
 # access (it needs camera calibration files)
 allow mediaserver efs_file:dir search;
-allow mediaserver efs_file:file r_file_perms;
 
+#allow mediaserver efs_file:file execmod;
+
+
+set_prop(mediaserver, init_prop)
 set_prop(mediaserver, camera_prop)
 
 # Use sockets received over binder from various services.
 allow mediaserver system_server:unix_stream_socket rw_socket_perms;
+
+# test allow mediacodec
+allow mediacodec system_file:file execmod;
+allow mediacodec graphics_device:dir search;
 
 unix_socket_connect(mediaserver, rild, rild)
 wakelock_use(mediaserver)

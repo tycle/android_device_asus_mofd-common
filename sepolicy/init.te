@@ -20,3 +20,11 @@ allow init sepfs:file w_file_perms;
 
 # Allow shimlibs
 allow init { domain -lmkd }:process noatsecure;
+
+
+# allow test kernel module request
+
+allow init kernel:system { module_request };
+
+# add netd here
+allow netd kernel:system { module_request };

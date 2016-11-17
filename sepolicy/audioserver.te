@@ -1,0 +1,7 @@
+
+allow audioserver media_rw_data_file:file rw_file_perms;
+allow audioserver media_rw_data_file:dir { r_file_perms search };
+allow audioserver tmpfs:dir { search };
+
+
+set_prop(audioserver, init_prop)

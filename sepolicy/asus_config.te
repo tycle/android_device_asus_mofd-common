@@ -15,11 +15,25 @@ allow asus_config bluetooth_efs_file:file { rw_file_perms setattr };
 allow asus_config device:dir write;
 allow asus_config efs_file:dir { r_dir_perms setattr };
 allow asus_config efs_file:file { r_file_perms setattr };
-allow asus_config factory_file:dir { r_dir_perms setattr };
-allow asus_config factory_file:file { r_file_perms setattr };
-allow asus_config rootfs:dir mounton;
+allow asus_config factory_file:dir { r_dir_perms mounton };
+allow asus_config factory_file:file { rw_file_perms mounton };
+allow asus_config rootfs:dir { r_dir_perms mounton };
 allow asus_config wifi_config_file:dir r_dir_perms;
 allow asus_config wifi_config_file:file { rw_file_perms setattr };
+
+#allow sysfs
+allow asus_config sysfs:dir { r_dir_perms setattr };
+allow asus_config sysfs:file { rw_file_perms };
+allow asus_config proc_meminfo:file { rw_file_perms };
+allow asus_config proc:file  rw_file_perms ;
+#allow asus_config sysfs:file { mount };
+
+#allow mount labeledfs
+#allow asus_config labeledfs:filesystem { mount };
+
+# customize_servi
+allow asus_config sysfs:file { rw_file_perms mounton };
+
 
 # allow it to mount /local_cfg
 allow asus_config self:capability sys_admin;
