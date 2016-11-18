@@ -16,8 +16,9 @@ allow asus_config device:dir write;
 allow asus_config efs_file:dir { r_dir_perms setattr };
 allow asus_config efs_file:file { r_file_perms setattr };
 allow asus_config factory_file:dir { r_dir_perms mounton };
-allow asus_config factory_file:file { rw_file_perms mounton };
-allow asus_config rootfs:dir { r_dir_perms mounton };
+allow asus_config asus_config:file { rw_file_perms };
+allow asus_config rootfs:dir { open getattr read ioctl lock mounton };
+allow asus_config rootfs:file { r_file_perms mounton };
 allow asus_config wifi_config_file:dir r_dir_perms;
 allow asus_config wifi_config_file:file { rw_file_perms setattr };
 

@@ -26,6 +26,9 @@ on init
     chmod 0600 /dev/dri/controlD64
     chmod 0640 /dev/matrix
 
+    # fix permission for telephoney
+    chmod 0644 /proc/cmdline
+
     # Android creates by-name disk links with the disk controller
     # in the generated path, so that the names pulled out of the GPT
     # can be associated with the correct disk. Create a shortcut to
@@ -259,7 +262,7 @@ service audioserver /system/bin/audioserver
     class main
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct qcom_diag radio system
+    group audio camera drmrpc inet media mediadrm radio system
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
 
@@ -302,7 +305,7 @@ on charger
 service media /system/bin/mediaserver
     class main
     user media
-    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm radio system
+    group audio camera inet drmrpc mediadrm radio system
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
 
